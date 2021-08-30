@@ -48,7 +48,7 @@ RSpec.describe WebMock do
 
         expect do
           Async::WebSocket::Client.connect(endpoint)
-        end.to raise_error(WebMock::NetConnectNotAllowedError)
+        end.to_not raise_error(WebMock::NetConnectNotAllowedError)
       end
     end
 
@@ -60,7 +60,7 @@ RSpec.describe WebMock do
 
         expect do
           Async::WebSocket::Client.connect(endpoint)
-        end.to raise_error(WebMock::NetConnectNotAllowedError)
+        end.to_not raise_error(WebMock::NetConnectNotAllowedError)
       end
     end
 
