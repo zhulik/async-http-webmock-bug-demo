@@ -4,4 +4,4 @@ How to run:
 
 `bundle install`
 
-`rspec`
+`rspec --backtrace`

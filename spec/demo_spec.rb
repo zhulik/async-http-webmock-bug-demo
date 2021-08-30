@@ -52,6 +52,18 @@ RSpec.describe WebMock do
       end
     end
 
+    context "when  is allowed" do
+      before { WebMock.disable_net_connect!(allow_localhost: true) }
+
+      it "does not work" do
+        endpoint = Async::HTTP::Endpoint.parse("https://example.com/websocket")
+
+        expect do
+          Async::WebSocket::Client.connect(endpoint)
+        end.to raise_error(WebMock::NetConnectNotAllowedError)
+      end
+    end
+
     context "when the host is not allowed" do
       before { WebMock.disable_net_connect! }
 
